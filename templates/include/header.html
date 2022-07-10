@@ -1,0 +1,55 @@
+{% load static %}
+{% load i18n news_tag %}
+<nav id="site-nav" class="navbar navbar-fixed-top navbar-custom">
+    <div class="container">
+        <div class="navbar-header">
+
+            <!-- logo -->
+            <div class="site-branding">
+                <a class="logo" href="{% url 'main' %}">
+                    <!-- logo image  -->
+                    <img src="{% static 'assets/images/logo.png' %}" alt="Logo">
+                    Aspekt
+                </a>
+            </div>
+
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-items" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+
+        </div><!-- /.navbar-header -->
+
+        <div class="collapse navbar-collapse" id="navbar-items">
+            
+            <ul class="nav navbar-nav navbar-right">
+                
+                    
+                <!-- navigation menu -->
+                <li class="active"><a href="{% url 'main' %}">{% trans 'О нас' %}</a></li>
+                <li><a  href="{% url 'coursess' %}" target="_blank">{% trans 'Курсы' %}</a></li>                    
+                <li><a  href="{% url 'news_list' %}" target="_blank">{% trans 'Статьи' %}</a></li>          
+                <li><a data-scroll href="{% url 'contacts' %}">{% trans 'Контакты' %}</a></li>
+                <li>
+                    <form action="{% url 'set_language' %}" method="post" style="height: auto;">{% csrf_token %}
+                        <input name="next" type="hidden" value="{{ redirect_to }}" >
+                        <select name="language" class="form-select" data-width="fit" style="background-color: rgba(0, 0, 0, 0); color: white; border: 0; margin: 0% 10px; font-size: 1.1em; padding: 0%;font-weight: normal; font-family: 'Roboto', sans-serif;">
+                            {% get_current_language as LANGUAGE_CODE %}
+                            {% get_available_languages as LANGUAGES %}
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                                    <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %}
+                                        selected{% endif %} style="color: black; height: 32px;">
+                                        {{ language.code }}
+                                    </option>
+                            {% endfor %}
+                        </select>
+                        <input type="submit" style="background-color: rgba(0, 0, 0, 0); color: white; border: 0; height: 32px; width: 32px; margin: 0%; font-size: 1.1em; padding: 11%; font-weight: normal; font-family: 'Roboto', sans-serif;" value="ок" >
+                    </form>
+                </li>
+            </ul>
+        </div>
+    </div><!-- /.iner -->
+</nav>

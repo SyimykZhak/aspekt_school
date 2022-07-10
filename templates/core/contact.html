@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load static i18n %}
+{% block title %}{% trans 'Контакты' %}{% endblock title %}
+{% block content %}
+
+{% for contact in contacts %}
+<section id="location" class="section location">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <h3 class="section-title">{% trans 'наш адрес' %}</h3>
+                <address>
+                    <p>{{contact.address}}<br>{% trans 'улица' %}: <a href="{{contact.map}}" target="_blank" class=""> {{contact.street}}</a><br> Телефон: <a href="tel: {{contact.telephone}}">{{contact.telephone}}</a><br>Email: <a href="mailto: {{contact.email}}" class=""> {{contact.email}}</a></p>
+                    <ul class="social-block">
+                        <li><a href="{{ contact.facebook }}" target="_blank"><i class="ion-social-facebook" id="facebook" style="color: black;"></i></a></li>
+                        <li><a href="{{ contact.instagram }}" target="_blank"><i class="ion-social-instagram" id="instagram" style="color: black;"></i></a></li>
+                        <li><a href="{{ contact.whatsapp }}" target="_blank"><i class="ion-social-whatsapp" id="whatsapp" style="color: black;"></i></a></li>
+                        <li><a href="{{ contact.twitter }}" target="_blank"><i class="ion-social-twitter" style="color: black;"></i></a></li>
+                    </ul>
+                </address>
+            </div>
+            <div class="col-sm-9">
+                <a class="dg-widget-link" href="http://2gis.kg/osh/firm/70000001059823410/center/72.8087890148163,40.51269800600538/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap">{% trans 'Посмотреть на карте Оша' %}</a><div class="dg-widget-link"><a href="http://2gis.kg/osh/center/72.808148,40.512067/zoom/17/routeTab/rsType/bus/to/72.808148,40.512067╎Аспект?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route">Найти проезд до Аспект</a></div><script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script><script charset="utf-8">new DGWidgetLoader({"width":'100%',"height":450,"borderColor":"#a3a3a3","pos":{"lat":40.51269800600538,"lon":72.8087890148163,"zoom":17},"opt":{"city":"osh"},"org":[{"id":"70000001059823410"}]});</script><noscript style="color:#c00;font-size:16px;font-weight:bold;">Виджет карты использует JavaScript. Включите его в настройках вашего браузера.</noscript>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+{% endblock %}

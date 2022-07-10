@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load news_tag %}
+{% load static i18n %}
+{% block title %}{% trans 'Статьи' %}{% endblock title %}
+
+{% block content %}
+
+
+<link rel="stylesheet" href="{% static './assets/css/category.css' %}">
+
+<section class="course" id="partner">
+    <div class="container">
+    <div class="container_2">
+        <h2 class="category_h1"></h2>
+        <div class="select-box"> 
+          {% get_categories as categories %}
+           
+          <div class="options-container">
+            {% for i in categories %}
+             <a href="{{i.get_absolute_url}}" class="aaa">
+            <div class="option">
+             <input type="radio" class="radio" id="travel" name="category" />
+              <label for="travel">{{i.name}}</label>
+            </div>
+          </a>
+            {% endfor %}
+          </div>
+         
+          <div class="selected">
+            категория: {{category.name}}
+          </div>
+        </div>
+      </div>
+    <div class="box-container">
+         {% for new in  category.news_category.all %} 
+        <div class="box">
+            <a href="{% url 'news_detail' new.url %}" class="image"><img src="{{new.image.url}}" alt=""></a>
+            <div class="content" >
+                <h2><a href="{% url 'news_detail' new.url %}" class="title">{{new.title}}</a> </h2>
+                <p>{{new.tagline}}</p>
+                </h1>
+                <div class="info">
+                    
+                    <h3>категория: <a ref="{{new.get_absolute_url}}" class="aaaa">{{new.category}}</a>
+                    </h3>
+
+                </div>
+            </div>
+        </div>
+          {% endfor %}
+    </div>
+    </div>
+    <div class="grid-img-right mt-4 text-right bg bg1" >
+      {% include 'include/pagination.html' %}
+  </div>
+</section>
+
+<script src="{% static 'assets/js/category.js' %}"></script>
+
+{% endblock %}

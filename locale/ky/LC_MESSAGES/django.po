@@ -1,0 +1,188 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-06-09 20:25+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: .\templates\core\contact.html:4 .\templates\include\header.html:34
+msgid "Контакты"
+msgstr "Байланыш"
+
+#: .\templates\core\contact.html:12 .\templates\core\main.html:287
+msgid "наш адрес"
+msgstr "биздин дарек"
+
+#: .\templates\core\contact.html:14 .\templates\core\main.html:289
+msgid "улица"
+msgstr "адрес"
+
+#: .\templates\core\contact.html:18
+msgid "Посмотреть на карте Оша"
+msgstr "Ош шаарынын картасынан көрүү"
+
+#: .\templates\core\main.html:13
+msgid "ДОСТУПНЫЙ НЕМЕЦКИЙ"
+msgstr "ЖЕТКИЛИКТҮҮ НЕМИС ТИЛИ"
+
+#: .\templates\core\main.html:15
+msgid "Выбирайте свой формат..."
+msgstr "Ыңгайлуу форматты тандаңыз..."
+
+#: .\templates\core\main.html:17
+msgid "Занимайтесь в группе, или один на один с преподавателем."
+msgstr "Группа менен, же жеке мугалим менен сабак окуңуз."
+
+#: .\templates\core\main.html:19
+msgid "Подробнее..."
+msgstr "Кененирээк..."
+
+#: .\templates\core\main.html:40 .\templates\include\header.html:31
+msgid "О нас"
+msgstr "Биз жөнүндө"
+
+#: .\templates\core\main.html:63
+msgid "в цифрах"
+msgstr "сан менен"
+
+#: .\templates\core\main.html:64
+msgid "Наши ученики доверяют нам свое будущее, поэтому учатся у нас"
+msgstr "Бидин студенттер бизге ишенет, ошондуктан бизди тандашат"
+
+#: .\templates\core\main.html:80
+msgid "преподавателей"
+msgstr "мугалимдер"
+
+#: .\templates\core\main.html:88
+msgid "групп каждую неделю"
+msgstr "жаңы тайпа жумасына"
+
+#: .\templates\core\main.html:96
+msgid "лет на рынке"
+msgstr "жылдан бери иштеп келебиз"
+
+#: .\templates\core\main.html:107
+msgid "Почему нужно выбрать нас?"
+msgstr "Эмне үчүн бизди тандаш керек?"
+
+#: .\templates\core\main.html:138
+msgid "Лицензия на ведение образовательной деятельности"
+msgstr "Билим берүү тууралуу уруксат"
+
+#: .\templates\core\main.html:156
+msgid "Есть вопросы обращайтесь!!!"
+msgstr "Сурооңуз болсо кайрылыңыз!!!"
+
+#: .\templates\core\main.html:182 .\templates\courses\course.html:122
+msgid "Отправить"
+msgstr "Жөнөтүү"
+
+#: .\templates\core\main.html:192
+msgid "Моменты из жизни нашей школы"
+msgstr "Биздин окуу жайдын жашоосунан көрүнүш"
+
+#: .\templates\core\main.html:213
+msgid "Отзывы"
+msgstr "Сын-пикирлер"
+
+#: .\templates\core\main.html:213
+msgid "студентов"
+msgstr "студент"
+
+#: .\templates\core\main.html:271
+msgid "Мы в соц.сетях"
+msgstr "Биз соц.тармактарда"
+
+#: .\templates\courses\course.html:4 .\templates\include\header.html:32
+msgid "Курсы"
+msgstr "Ийримдер"
+
+#: .\templates\courses\course.html:25
+msgid "Группы"
+msgstr "Тайпалар"
+
+#: .\templates\courses\course.html:33
+msgid "начало:"
+msgstr "башталышы:"
+
+#: .\templates\courses\course.html:36
+msgid "Преподаватель"
+msgstr "Мугалим"
+
+#: .\templates\courses\course.html:47
+msgid "Преподаватели"
+msgstr "Мугалимдер"
+
+#: .\templates\courses\course.html:72
+msgid "Записаться на курс"
+msgstr "Ийримге катталуу"
+
+#: .\templates\courses\course.html:103
+msgid "Цель изучения"
+msgstr "Окуудагы максатыңыз"
+
+#: .\templates\courses\course.html:104
+msgid "Учеба"
+msgstr "Окуу үчүн"
+
+#: .\templates\courses\course.html:105
+msgid "Переезд"
+msgstr "Саякаттоо"
+
+#: .\templates\courses\course.html:106
+msgid "Работа"
+msgstr "Жумуш үчүн"
+
+#: .\templates\courses\course.html:107
+msgid "Самообразование"
+msgstr "Өз алдымча үйрөнүү үчүн"
+
+#: .\templates\courses\course.html:113
+msgid "В какое время хотите записаться?"
+msgstr "Кайсы убакытка жазылууну каалайсыз?"
+
+#: .\templates\courses\courses.html:4
+msgid "Курс"
+msgstr "Ийрим"
+
+#: .\templates\courses\courses.html:11
+msgid "Наши курсы"
+msgstr "Биздин ийримдер"
+
+#: .\templates\courses\courses.html:26
+msgid "цена"
+msgstr "баасы"
+
+#: .\templates\courses\courses.html:26
+msgid "в месяц"
+msgstr "(1 айга)"
+
+#: .\templates\courses\courses.html:29
+msgid "часов длитcя один урок"
+msgstr "саат(1 сабак)"
+
+#: .\templates\courses\courses.html:30
+msgid "месяцев"
+msgstr "ай"
+
+#: .\templates\include\header.html:33 .\templates\news\category.html:3
+#: .\templates\news\news.html:5 .\templates\news\news.html:15
+msgid "Статьи"
+msgstr "Макалалар"
+
+#: .\templates\news\news.html:31
+msgid "категория стате́й"
+msgstr "макалалар категориясы"

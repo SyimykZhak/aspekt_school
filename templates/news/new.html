@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}{{new.title}}{% endblock title %}
+{% block content %}
+
+
+
+<section class="course" id="partner">
+    <div class="container">   
+    
+    <div class="box-container">
+        <h1 class="heading">{{new.title}}</h1>
+    </div>
+    </div>
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="row">
+                    <p>{{new.desccription|safe}}</p>
+               <!-- /.col-sm-6 -->
+                    
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section>
+</section>
+
+
+
+{% endblock %}

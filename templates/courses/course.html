@@ -1,0 +1,134 @@
+{% extends 'base.html' %}
+{% load i18n news_tag %}
+{% load static %}
+{% block title %}{% trans 'Курсы' %}{% endblock title %}
+{% block content %}
+
+
+
+<section class="course" id="partner">
+    <div class="container">   
+    <div class="box-container">
+        <h1 class="heading">{{course.title}}</h1>
+    </div>
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="row">
+                    <p>{{course.description|safe}}</p>
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section>
+    <section id="schedule" class="section schedule">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">{% trans 'Группы' %}</h3>
+                </div>
+            </div>
+            <div class="row">
+                {% for group in course.course_name.all %}
+                <div class="col-md-4 col-sm-6">
+                    <div class="schedule-box">
+                        <div class="time">
+                            <time datetime="10:00">{% trans 'начало: ' %} {{group.start_time}} </time>
+                        </div>
+                        <h3>{{course.title}}</h3>
+                        <p>{% trans 'Преподаватель' %}: {{group.teacher}}</p>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+    </section>
+
+    <section id="speakers" class="section speakers">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">{% trans 'Преподаватели' %}</h3>
+                </div>
+            </div>
+
+            <div class="row">
+                {% for teacher in  course.teacher.all %}
+                <div class="col-md-4">
+                    
+                    <div class="speaker">
+                        <figure>
+                            <img alt="" class="img-responsive center-block" src="{{teacher.image.url}}">
+                        </figure>
+                        <h3>{{ teacher.name }}</h3>
+                        <p>{{ teacher.speciality }}</p>
+                    </div><!-- /.speaker -->
+                 
+                </div><!-- /.col-md-4 -->
+         {% endfor %}
+        </div>
+        </div>
+    </section>
+    <section id="registration" class="section registration">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <h3 class="section-title">{% trans 'Записаться на курс' %}</h3>
+                </div>
+            </div>
+                
+            <form action="{% url 'register_view' course.id %}" id="registration-form" method="post">
+                {% csrf_token %} 
+                <div class="row">
+                    <div class="col-md-12" id="registration-msg" style="display:none;">
+                        <div class="alert"></div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Имя" id="fname" name="name" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Фамилия" id="lname" name="lastname" required>
+                        </div>
+
+                        <div class="form-group">
+                            <input type="email" class="form-control" placeholder="Email" id="email" name="email" required>
+                        </div> 
+                    </div>
+
+                    <div class="col-sm-6">
+                       <div class="form-group">
+                            <input type="tel" class="form-control" placeholder="Телефон" id="cell" name="telephone" required>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control" name="goal" id="city" required>
+                                <option readonly>{% trans 'Цель изучения' %}</option>
+                                <option>{% trans 'Учеба' %}</option>
+                                <option>{% trans 'Переезд' %}</option>
+                                <option>{% trans 'Работа' %}</option>
+                                <option>{% trans 'Самообразование' %}</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control" name="group" required>
+                                <option readonly>{% trans 'В какое время хотите записаться?' %}</option>
+                                {% for i in course.course_name.all %}
+                                <option>{{i.start_time}} - {{i.end_time}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt20">
+                    <button type="submit" class="btn btn-black" >{% trans 'Отправить' %}</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- <div class="clearfix"><button class="signupbtn">Добавить курс</button></div> -->
+  
+</section>
+
+
+
+{% endblock %}

@@ -1,0 +1,302 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load static i18n %}
+{% block title %}Aspekt{% endblock title %}
+{% block content %}
+
+
+
+{% for info in main %}
+<header id="site-header" class="site-header valign-center"> 
+    <div class="intro" style="background:url('{{info.backround.url}}') no-repeat center center/cover;">
+
+        <h2>{% trans 'ДОСТУПНЫЙ НЕМЕЦКИЙ' %}</h2>
+        <h1>
+           {% trans 'Выбирайте свой формат...' %}</h1>
+        
+        <p>{% trans 'Занимайтесь в группе, или один на один с преподавателем.' %}</p>
+        
+        <a class="btn btn-white" href="{% url 'coursess' %}" target="_blank">{% trans 'Подробнее...' %}</a>
+        
+        <ul class="social-block">
+            <li><a href="{{ info.facebook }}" target="_blank"><i class="ion-social-facebook" id="facebook"></i></a></li>
+            <li><a href="{{ info.instagram }}" target="_blank"><i class="ion-social-instagram" id="instagram"></i></a></li>
+            <li><a href="{{ info.whatsapp }}" target="_blank"><i class="ion-social-whatsapp" id="whatsapp"></i></a></li>
+            <li><a href="{{ info.twitter }}" target="_blank"><i class="ion-social-twitter"></i></a></li>
+        </ul>
+        {% for messeg in messages %}
+        <div class="alert alert-success" role="alert" style="width: 50%; margin: 0 auto;">
+            <a href="#" class="alert-link">{{messeg}}</a>
+          </div>
+          {% endfor %}
+    </div>
+</header>
+
+<section id="about" class="section about">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+
+                <h3 class="section-title">{% trans 'О нас' %}</h3>
+
+                <p>{{info.about}}</p>
+
+                
+
+            </div><!-- /.col-sm-6 -->
+
+            <div class="col-sm-6">
+                     <figure>
+                        <img alt="" class="img-responsive" src="{{info.image_for_about.url}}">
+                    </figure>
+               
+
+            </div><!-- /.col-sm-6 -->
+        </div><!-- /.row -->
+    </div><!-- /.container -->
+</section>
+                                                                <!-- style="background:url({% static '/assets/images/backgrounds/german.jpg' %}) no-repeat center center/cover;" -->
+<section id="facts" class="section bg-image-1 facts text-center" >
+    <div class="container">
+        <div class="row">
+        <div class="col-md-12">
+            <h2 style="color: white;"> ASpekt {% trans 'в цифрах' %}</h2>
+            <h4 style="color: white;">{% trans 'Наши ученики доверяют нам свое будущее, поэтому учатся у нас' %}</h4>
+        </div>
+    </div>
+        <div class="row">
+            <div class="col-sm-3">
+                <figure>
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/logo/logo.png' %}">
+                </figure>
+                <h3>1000+<br>{% trans 'студентов' %}</h3>
+            
+            </div>
+            <div class="col-sm-3">
+                <figure>
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/logo/teachers.png' %}">
+                </figure>
+                <!-- <info class="ion-ios-student"></info> -->
+                <h3>10+<br>{% trans 'преподавателей' %}</h3>
+            
+            </div>
+            <div class="col-sm-3">
+
+                <figure>
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/logo/group.png' %}">
+                </figure>
+                <h3>2+<br>{% trans 'групп каждую неделю' %}</h3>
+            
+            </div>
+            <div class="col-sm-3">
+            
+                <figure>
+                    <img alt="" class="img-responsive center-block" src="{% static 'assets/images/logo/clock.png'%}">
+                </figure>
+                <h3>5+<br>{% trans 'лет на рынке' %}</h3>
+            
+            </div>
+        </div><!-- row -->
+    </div><!-- container -->
+</section>
+
+<section id="speakers" class="section speakers">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">{% trans 'Почему нужно выбрать нас?' %}</h3>
+            </div>
+        </div>
+        
+        <div class="row">
+            {% for b in info.benefits.all %}
+            <div class="col-md-4">
+                <div class="speaker">
+
+                    <figure>
+                        <img alt="" class="img-responsive center-block" src="{{b.logo.url}}">
+                    </figure>
+
+
+                    <p>{{b.description}}</p>
+                  
+
+                </div><!-- /.speaker -->
+            </div><!-- /.col-md-4 -->
+        {% endfor %}
+    </div><!-- /.row -->
+        
+      
+        </div>
+    </div>
+</section>
+
+<section id="partner" class="section partner">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">{% trans 'Лицензия на ведение образовательной деятельности' %}</h3>
+            </div>
+        </div>
+        <div class="row">
+            {% for licence in info.license.all %}
+            <div class="col-sm-3">
+                <a class="partner-box partner-box-1" style="background: url({{licence.logo.url}}) no-repeat center center/contain;" href="{{licence.logo.url}}">
+                  
+                </a>
+            </div>
+           {% endfor %}
+        </div>
+</section>
+
+<section id="registration" class="section registration">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title"> {% trans 'Есть вопросы обращайтесь!!!' %}</h3>
+            </div>
+        </div>
+            
+        <form action="{% url 'question_view' %}" id="registration-form" method="post">
+            {% csrf_token %} 
+            <div class="row">
+                <div class="col-md-12" id="registration-msg" style="display:none;">
+                    <div class="alert"></div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Имя" id="cell" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control" placeholder="Телефон" id="cell" name="telephone" required>   
+                    </div>
+                </div>
+
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <textarea class="form-control-question" placeholder="Вопросы" name="question"></textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="text-center mt20">
+                <button type="submit" class="btn btn-black" id="registration-submit-btn">{% trans 'Отправить' %}</button>
+            </div>
+        </form>
+    </div>
+</section>
+
+<section id="photos" class="section photos" id="registration">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="section-title">{% trans 'Моменты из жизни нашей школы' %}</h3>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul class="grid">
+                    {% for photo in info.shots.all %}
+                    <li class="grid-item grid-item-sm-6">
+                        <img alt="" class="img-responsive center-block" src="{{photo.image.url}}">
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>            
+    </div>
+</section>
+
+<section id="about" class="section about">
+    <div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h3 class="section-title">{% trans 'Отзывы' %}</h3>
+        </div>
+    </div>
+<div class="myreviews">
+    
+    <div class="slide-container active">
+        <div class="slide">
+            <i class="fas fa-quote-right icon"></i>
+            <div class="user">
+                <img src="{% static 'assets/images/reviews/4.jpg' %}" alt="profile">
+                <div class="user-info">
+                    <h1>Айбек</h1>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>   
+            <p class="text">Большое спасибо Дарье Кучиной за подготовку к экзамену в Гёте институте уровень В2. Благодаря занятиям я совершила настоящий прорыв в немецком языке. На уроках была позитивная и доброжелательная атмосфера. Дарья использует актуальный учебный материал, хорошо знает структуру экзамена.</p>
+        </div>
+    </div>
+    {% for review in info.reviews.all %}
+    <div class="slide-container">
+        <div class="slide">
+            <i class="fas fa-quote-right icon"></i>
+            <div class="user">
+                <img src="{{review.image.url}}" alt="">
+                <div class="user-info">
+                    <h1>{{review.name}}</h1>
+                    <div class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="far fa-star"></i>
+                    </div>
+                </div>
+            </div>
+            <p class="text">{{review.text}}</p>
+        </div>
+    </div>
+    {% endfor %}
+
+   
+
+    <div id="next" class="fas fa-chevron-right" onclick="next()"></div>
+    <div id="prev" class="fas fa-chevron-left" onclick="prev()"></div>
+</div>
+</div>
+</section>
+
+<section id="contribution" class="section bg-image-2 contribution" >
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="text-uppercase mt0 font-400">{% trans 'Мы в соц.сетях' %}</h3>
+                <ul class="social-block">
+                    <li><a href="{{ info.facebook }}" target="_blank"><i class="ion-social-facebook" id="facebook"></i></a></li>
+                    <li><a href="{{ info.instagram }}" target="_blank"><i class="ion-social-instagram" id="instagram"></i></a></li>
+                    <li><a href="{{ info.whatsapp }}" target="_blank"><i class="ion-social-whatsapp" id="whatsapp"></i></a></li>
+                    <li><a href="{{ info.twitter }}" target="_blank"><i class="ion-social-twitter"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="location" class="section location">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <h3 class="section-title">{% trans 'наш адрес' %}</h3>
+                <address>
+                    <p>{{info.address}}<br>{% trans 'улица' %}: <a href="{{info.map}}" target="_blank" class=""> {{info.street}}</a><br> Телефон: <a href="tel: {{info.telephone}}">{{info.telephone}}</a><br>Email: <a href="mailto: {{info.email}}" class=""> {{info.email}}</a></p>
+                </address>
+            </div>
+            <div class="col-sm-9">
+                <a class="dg-widget-link" href="http://2gis.kg/osh/firm/70000001059823410/center/72.8087890148163,40.51269800600538/zoom/17?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=bigMap">Посмотреть на карте Оша</a><div class="dg-widget-link"><a href="http://2gis.kg/osh/center/72.808148,40.512067/zoom/17/routeTab/rsType/bus/to/72.808148,40.512067╎Аспект?utm_medium=widget-source&utm_campaign=firmsonmap&utm_source=route">Найти проезд до Аспект</a></div><script charset="utf-8" src="https://widgets.2gis.com/js/DGWidgetLoader.js"></script><script charset="utf-8">new DGWidgetLoader({"width":'100%',"height":450,"borderColor":"#a3a3a3","pos":{"lat":40.51269800600538,"lon":72.8087890148163,"zoom":17},"opt":{"city":"osh"},"org":[{"id":"70000001059823410"}]});</script><noscript style="color:#c00;font-size:16px;font-weight:bold;">Виджет карты использует JavaScript. Включите его в настройках вашего браузера.</noscript>
+            </div>
+        </div>
+    </div>
+</section>
+{% endfor %}
+
+
+
+{% endblock %}
